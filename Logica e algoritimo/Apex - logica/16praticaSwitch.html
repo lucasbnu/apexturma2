@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <script>
+        var moeda = prompt("Qual mode você deseja converte o real");
+        var valor = prompt("Qual valor você quer converter?");
+        //1 euro vale 6 reais
+        //1 dolar vale 5 reais
+        //1 peso mexicano vale 0.25
+        var conversao = 0;
+        switch (moeda) {
+            case "real":
+              conversao = valor;  
+            break;
+            case "dolar":
+              conversao = valor / 5;   
+            break;
+            case "euro":
+              conversao = valor / 6;
+            break;
+            
+            case "peso mexicano":
+                conversao = valor * 4;
+            break;
+        
+            default:
+                document.write("só é possivel converter dolar,euro,peso mexicano");
+            break;
+        }
+        if (conversao > 0){
+           document.write("o valor convertido é :"+conversao+" "+moeda);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

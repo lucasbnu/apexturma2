@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    var votosdiego = 0;
+    var votospamela = 0;
+    var votoslucas = 0;
+    var numerodevotos = 0;
+    var voto = "";
+    while (numerodevotos < 10){
+    voto = prompt("Em quem você vota?");
+    switch (voto) {
+        case "lucas":
+          votoslucas++;    
+        break;
+
+        case "pamela":
+          votospamela++;    
+        break;
+        
+        case "diego":
+          votosdiego++;     
+        break;        
+    }
+    numerodevotos++;
+}
+    document.write("Lucas tem "+votoslucas+"<br>");
+    document.write("Pamela tem "+votospamela+"<br>");
+    document.write("Diego tem "+votosdiego+"<br>")
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
