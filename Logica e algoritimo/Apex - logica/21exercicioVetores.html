@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+      var cidades = ["Blumenau","Floarianopolis","São fransisco do sul"];
+      var novaCidade = prompt("Informe uma cidade:");
+      
+      //Adicionando uma cidade que foi informada pelo prompt
+      cidades.push(novaCidade);
+
+      var cidadeParaRemover = prompt("Informe de 0 a 3 uma cidade para remover");
+      //Remover
+      cidades.splice(cidadeParaRemover,1);
+      
+      var novacidadesubstitura = prompt("Informe o nome de uma cidade para troca");
+      //Alterar
+      cidades[1] = novacidadesubstitura;
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
