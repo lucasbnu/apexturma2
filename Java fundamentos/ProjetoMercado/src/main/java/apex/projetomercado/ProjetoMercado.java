@@ -13,7 +13,11 @@ public class ProjetoMercado {
         ComandosDAO DAO = new ComandosDAO();
         produtosDTO DTO = new produtosDTO();
         DTO.setId_produto(16);
-        String comando = DAO.apagaRegistro(DTO);
+        DTO.setDescricao_produto("Controle");
+        DTO.setPreco(25.0f);
+        DTO.setSituacao('A');
+        String comando = DAO.insereRegistro(DTO);
+
         JOptionPane.showMessageDialog(null, comando);
     }
 }

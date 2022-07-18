@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class ClientesDTO extends Tabela {
     private Campo<Integer> ID_CLIENTE = new Campo<>("id_cliente",true);
-    private Campo<String>  nome_cliente;// = new Campo<>("nome_cliente");
+    private Campo<String>  nome_cliente = new Campo<>("nome_cliente");
     private Campo<Integer> idade = new Campo<>("idade");
     private Campo<Character> situacao = new Campo<>("situacao");
    
