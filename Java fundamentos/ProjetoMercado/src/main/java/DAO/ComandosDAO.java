@@ -5,7 +5,11 @@ import UTIL.Campo;
 import java.util.ArrayList;
 
 public class ComandosDAO {
-
+    private BancoDAO banco = new BancoDAO();
+    public String retornaRegistro(Tabela tb){
+        return "SELECT * FROM "+tb.nomeTabela;
+    }
+    
     public String atualizaRegistro(Tabela tb) {
         String comando = "UPDATE " + tb.nomeTabela + " SET ";
         String comandoWhere = " WHERE ";
@@ -32,7 +36,7 @@ public class ComandosDAO {
                 comandoWhere += Icampo.nomeCampo + " = " + Icampo.valorCampo.toString();
             }
         }
-
+        banco.executaComando(comando + ValoresTabela + comandoWhere);
         return comando + ValoresTabela + comandoWhere;
     }
 
@@ -45,7 +49,10 @@ public class ComandosDAO {
                 comandoWhere = Icampo.nomeCampo + " = " + Icampo.valorCampo.toString();
             }
         }
-        return comando + comandoWhere;
+        String ComandoFinal = comando + comandoWhere;
+        
+        banco.executaComando(ComandoFinal);
+        return ComandoFinal;
     }
 
     public String insereRegistro(Tabela tb) {
@@ -80,6 +87,7 @@ public class ComandosDAO {
             tamanhoLista--;
         }
         ValoresTabela += ")";
+        banco.executaComando(Comando + CamposTabela + ValoresTabela);
         return Comando + CamposTabela + ValoresTabela;
     }
 }
