@@ -3,6 +3,7 @@ package DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -17,7 +18,18 @@ public class BancoDAO {
              JOptionPane.showMessageDialog(null, "BancoDAO.BancoDAO: "+e.getMessage());
         }
     }
-    public boolean executaComando(String Comando){
+    
+        public ResultSet retornaDados(String Comando){
+            ResultSet retorno = null;
+            try {
+                ps = conn.prepareStatement(Comando);
+                retorno = ps.executeQuery();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "BancoDAO.retornaDados: "+ex.getMessage());
+            }
+               return retorno;    
+        }
+        public boolean executaComando(String Comando){
         try {
             ps = conn.prepareStatement(Comando);
             ps.execute();
