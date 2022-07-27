@@ -78,6 +78,11 @@ public class ClientesView extends javax.swing.JFrame {
                 "Id cliente", "Nome", "idade", "situacao"
             }
         ));
+        tabela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabela);
 
         btncancelar.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
@@ -152,7 +157,7 @@ public class ClientesView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(edtnome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(edtIDcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
@@ -161,7 +166,9 @@ public class ClientesView extends javax.swing.JFrame {
                             .addComponent(edtidade, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
                             .addComponent(edtSituacao))
                         .addGap(48, 48, 48))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                        .addGap(18, 18, 18))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,6 +266,13 @@ public class ClientesView extends javax.swing.JFrame {
         atualizaTela();
         limpaTela();
     }//GEN-LAST:event_btnapagarActionPerformed
+
+    private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
+        edtIDcliente.setText(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
+        edtnome.setText( tabela.getValueAt(tabela.getSelectedRow(),1).toString() );
+        edtidade.setText( tabela.getValueAt(tabela.getSelectedRow(),2).toString() );
+        edtSituacao.setText( tabela.getValueAt(tabela.getSelectedRow(),3).toString() );
+    }//GEN-LAST:event_tabelaMouseClicked
 
     /**
      * @param args the command line arguments
