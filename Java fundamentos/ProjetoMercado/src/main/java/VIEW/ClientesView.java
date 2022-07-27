@@ -4,6 +4,10 @@
  */
 package VIEW;
 
+import DAO.ComandosDAO;
+import DTO.ClientesDTO;
+import javax.swing.JFrame;
+
 /**
  *
  * @author lucas
@@ -32,27 +36,40 @@ public class ClientesView extends javax.swing.JFrame {
         edtnome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         edtidade = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        edtSituacao = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabela = new javax.swing.JTable();
         btncancelar = new javax.swing.JButton();
         btnconfirmar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnnovo = new javax.swing.JButton();
+        btneditar = new javax.swing.JButton();
+        btnapagar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jLabel1.setText("Identificador Cliente");
 
+        edtIDcliente.setEditable(false);
+
         jLabel2.setText("Nome do Cliente");
+
+        edtnome.setEditable(false);
 
         jLabel3.setText("Idade");
 
+        edtidade.setEditable(false);
+
+        edtSituacao.setEditable(false);
+
         jLabel4.setText("Situação");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null}
@@ -61,24 +78,51 @@ public class ClientesView extends javax.swing.JFrame {
                 "Id cliente", "Nome", "idade", "situacao"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabela);
 
         btncancelar.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         btncancelar.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucas\\Downloads\\icones\\uso\\cancel.png")); // NOI18N
         btncancelar.setText("CANCELAR");
+        btncancelar.setEnabled(false);
+        btncancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncancelarActionPerformed(evt);
+            }
+        });
 
         btnconfirmar.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
         btnconfirmar.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucas\\Downloads\\icones\\uso\\confirm.png")); // NOI18N
         btnconfirmar.setText("CONFIRMAR");
+        btnconfirmar.setEnabled(false);
+        btnconfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnconfirmarActionPerformed(evt);
+            }
+        });
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucas\\Downloads\\icones\\24\\new.png")); // NOI18N
-        jButton1.setText("NOVO");
+        btnnovo.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucas\\Downloads\\icones\\24\\new.png")); // NOI18N
+        btnnovo.setText("NOVO");
+        btnnovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnnovoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucas\\Downloads\\icones\\24\\update.png")); // NOI18N
-        jButton2.setText("EDITAR");
+        btneditar.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucas\\Downloads\\icones\\24\\update.png")); // NOI18N
+        btneditar.setText("EDITAR");
+        btneditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneditarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucas\\Downloads\\icones\\24\\delete.png")); // NOI18N
-        jButton3.setText("APAGAR");
+        btnapagar.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucas\\Downloads\\icones\\24\\delete.png")); // NOI18N
+        btnapagar.setText("APAGAR");
+        btnapagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnapagarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,11 +138,11 @@ public class ClientesView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnnovo)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(btneditar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addComponent(btnapagar)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,17 +150,17 @@ public class ClientesView extends javax.swing.JFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(edtIDcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(edtnome, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(edtnome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(edtIDcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(edtidade, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(56, 56, 56))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(edtidade, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                            .addComponent(edtSituacao))
+                        .addGap(48, 48, 48))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -130,7 +174,7 @@ public class ClientesView extends javax.swing.JFrame {
                             .addComponent(edtidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(edtSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -148,14 +192,73 @@ public class ClientesView extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnnovo)
+                    .addComponent(btneditar)
+                    .addComponent(btnapagar))
                 .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void atualizaTela(){
+        ClientesDTO cli = new ClientesDTO();
+        ComandosDAO DAO = new ComandosDAO();
+        tabela.setModel(DAO.retornaRegistroCRUD(cli));       
+    }
+    
+    private void limpaTela(){
+        edtIDcliente.setText("");
+        edtSituacao.setText("");
+        edtidade.setText("");
+        edtnome.setText("");
+    }
+    
+    private void modoEdicao(boolean editando){
+        edtidade.setEditable(editando);
+        edtnome.setEditable(editando);
+        edtSituacao.setEditable(editando);
+        btncancelar.setEnabled(editando);
+        btnconfirmar.setEnabled(editando);
+        btnnovo.setEnabled(!editando);
+        btneditar.setEnabled(!editando);
+        btnapagar.setEnabled(!editando);   
+    }
+    
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        atualizaTela();
+    }//GEN-LAST:event_formWindowActivated
+
+    private void btnnovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnovoActionPerformed
+        modoEdicao(true);
+        limpaTela();
+    }//GEN-LAST:event_btnnovoActionPerformed
+
+    private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
+        modoEdicao(false);
+        limpaTela();
+    }//GEN-LAST:event_btncancelarActionPerformed
+
+    private void btnconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconfirmarActionPerformed
+        ClientesDTO cli = new ClientesDTO();
+        ComandosDAO comando = new ComandosDAO();
+        cli.setIdade(Integer.parseInt(edtidade.getText()));
+        cli.setNome_cliente(edtnome.getText());
+        cli.setSituacao(edtSituacao.getText().charAt(0));
+        comando.insereRegistro(cli);
+        atualizaTela();
+        limpaTela();
+        modoEdicao(false);
+    }//GEN-LAST:event_btnconfirmarActionPerformed
+
+    private void btneditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditarActionPerformed
+        modoEdicao(true);
+    }//GEN-LAST:event_btneditarActionPerformed
+
+    private void btnapagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnapagarActionPerformed
+        atualizaTela();
+        limpaTela();
+    }//GEN-LAST:event_btnapagarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,20 +296,20 @@ public class ClientesView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnapagar;
     private javax.swing.JButton btncancelar;
     private javax.swing.JButton btnconfirmar;
+    private javax.swing.JButton btneditar;
+    private javax.swing.JButton btnnovo;
     private javax.swing.JTextField edtIDcliente;
+    private javax.swing.JTextField edtSituacao;
     private javax.swing.JTextField edtidade;
     private javax.swing.JTextField edtnome;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 }

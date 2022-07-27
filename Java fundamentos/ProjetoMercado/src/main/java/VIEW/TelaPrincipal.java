@@ -26,14 +26,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnclientes = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucas\\OneDrive\\Pictures\\Projeto mercado apex\\Usuario.png")); // NOI18N
-        jButton1.setText("Cadastro de usuarios");
+        btnclientes.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        btnclientes.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucas\\OneDrive\\Pictures\\Projeto mercado apex\\Usuario.png")); // NOI18N
+        btnclientes.setText("Cadastro de usuarios");
+        btnclientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnclientesActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucas\\OneDrive\\Pictures\\Projeto mercado apex\\teste car.png")); // NOI18N
@@ -47,7 +52,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnclientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(246, Short.MAX_VALUE))
         );
@@ -55,7 +60,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnclientes, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -63,6 +68,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnclientesActionPerformed
+        ClientesView tela = new ClientesView();
+        tela.setVisible(true);
+    }//GEN-LAST:event_btnclientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,7 +110,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnclientes;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }

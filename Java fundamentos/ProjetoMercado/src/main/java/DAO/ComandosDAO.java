@@ -2,12 +2,15 @@ package DAO;
 
 import DTO.Tabela;
 import UTIL.Campo;
+import UTIL.CRUDUtil;
 import java.util.ArrayList;
+import javax.swing.table.TableModel;
 
 public class ComandosDAO {
     private BancoDAO banco = new BancoDAO();
-    public String retornaRegistro(Tabela tb){
-        return "SELECT * FROM "+tb.nomeTabela;
+    
+    public TableModel retornaRegistroCRUD(Tabela tb){
+        return CRUDUtil.resultSetToTableModel( banco.retornaDados("SELECT * FROM "+tb.nomeTabela) );  
     }
     
     public String atualizaRegistro(Tabela tb) {
