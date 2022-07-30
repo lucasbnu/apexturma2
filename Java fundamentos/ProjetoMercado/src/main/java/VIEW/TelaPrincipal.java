@@ -44,6 +44,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\lucas\\OneDrive\\Pictures\\Projeto mercado apex\\teste car.png")); // NOI18N
         jButton2.setText("Cadastro de Produtos");
         jButton2.setToolTipText("");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,6 +79,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_btnclientesActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ProdutosView tela = new ProdutosView();
+        tela.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -99,7 +109,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
+        //</editor-fold
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

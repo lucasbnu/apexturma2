@@ -5,7 +5,7 @@
 package VIEW;
 
 import DAO.ComandosDAO;
-import DTO.ClientesDTO;
+import DTO.ProdutosDTO;
 import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
  *
  * @author lucas
  */
-public class ClientesView extends javax.swing.JFrame {
+public class ProdutosView extends javax.swing.JFrame {
     private int acao = 0; // 0 = vizualizando 1 = inserindo 2 = editando
     /**
      * Creates new form ClientesView
      */
-    public ClientesView() {
+    public ProdutosView() {
         initComponents();
     }
 
@@ -33,11 +33,11 @@ public class ClientesView extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        edtIDcliente = new javax.swing.JTextField();
+        edtIDproduto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        edtnome = new javax.swing.JTextField();
+        edtdescricaoproduto = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        edtidade = new javax.swing.JTextField();
+        edtPreco = new javax.swing.JTextField();
         edtSituacao = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -64,17 +64,17 @@ public class ClientesView extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Identificador Cliente");
+        jLabel1.setText("Identificador produto");
 
-        edtIDcliente.setEditable(false);
+        edtIDproduto.setEditable(false);
 
         jLabel2.setText("Nome do Cliente");
 
-        edtnome.setEditable(false);
+        edtdescricaoproduto.setEditable(false);
 
-        jLabel3.setText("Idade");
+        jLabel3.setText("Preço");
 
-        edtidade.setEditable(false);
+        edtPreco.setEditable(false);
 
         edtSituacao.setEditable(false);
 
@@ -165,15 +165,15 @@ public class ClientesView extends javax.swing.JFrame {
                                     .addComponent(jLabel2))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(edtnome, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(edtIDcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(edtdescricaoproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(edtIDproduto, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(100, 100, 100)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(edtidade)
+                                    .addComponent(edtPreco)
                                     .addComponent(edtSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnnovo)
@@ -207,7 +207,7 @@ public class ClientesView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(edtidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(edtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(edtSituacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,19 +215,19 @@ public class ClientesView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(edtIDcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(edtIDproduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(edtnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(edtdescricaoproduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbOperacao)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cbCampos, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
-                    .addComponent(edtPesquisa, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                    .addComponent(cbCampos)
+                    .addComponent(edtPesquisa))
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,16 +239,16 @@ public class ClientesView extends javax.swing.JFrame {
                     .addComponent(btnnovo)
                     .addComponent(btneditar)
                     .addComponent(btnapagar))
-                .addGap(17, 17, 17))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void atualizaRegistrosTela(){
-        ClientesDTO cli = new ClientesDTO();
+        ProdutosDTO cli = new ProdutosDTO();
         ComandosDAO DAO = new ComandosDAO();
-        tabela.setModel(DAO.retornaRegistroCRUD(cli,""));   
+        tabela.setModel(DAO.retornaRegistroCRUD(cli,"")); 
         cbCampos.removeAllItems();
         Set<String> apelidos = cli.retornaApelidoCampos().keySet();
         for (String apelido : apelidos) {
@@ -258,15 +258,15 @@ public class ClientesView extends javax.swing.JFrame {
     }
     
     private void limpaCamposTela(){
-        edtIDcliente.setText("");
+        edtIDproduto.setText("");
         edtSituacao.setText("");
-        edtidade.setText("");
-        edtnome.setText("");
+        edtPreco.setText("");
+        edtdescricaoproduto.setText("");
     }
     
     private void modoEdicao(boolean editando){
-        edtidade.setEditable(editando);
-        edtnome.setEditable(editando);
+        edtPreco.setEditable(editando);
+        edtdescricaoproduto.setEditable(editando);
         edtSituacao.setEditable(editando);
         btncancelar.setEnabled(editando);
         btnconfirmar.setEnabled(editando);
@@ -294,16 +294,17 @@ public class ClientesView extends javax.swing.JFrame {
     }//GEN-LAST:event_btncancelarActionPerformed
 
     private void btnconfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconfirmarActionPerformed
-        ClientesDTO cli = new ClientesDTO();
+        ProdutosDTO cli = new ProdutosDTO();
         ComandosDAO comando = new ComandosDAO();
 
-        cli.setIdade(Integer.parseInt(edtidade.getText()));
-        cli.setNome_cliente(edtnome.getText());
+        cli.setPreco(Float.parseFloat(edtPreco.getText()));
+        cli.setDescricao_produto(edtdescricaoproduto.getText());
         cli.setSituacao(edtSituacao.getText().charAt(0));
+        
         if (acao == 1){
            comando.insereRegistro(cli);
         }else{
-           cli.setID_CLIENTE(Integer.parseInt(edtIDcliente.getText()));
+           cli.setId_produto(Integer.parseInt(edtIDproduto.getText()));
            comando.atualizaRegistro(cli);
                 }
         atualizaRegistrosTela();
@@ -318,14 +319,14 @@ public class ClientesView extends javax.swing.JFrame {
 
     private void btnapagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnapagarActionPerformed
         String mensagem = "";
-        ClientesDTO cli = new ClientesDTO();
+        ProdutosDTO cli = new ProdutosDTO();
         ComandosDAO comando = new ComandosDAO();
-        mensagem = "Você realmente deseja apagar o cliente:\n"+
-                   edtnome.getText()+"\n"+
+        mensagem = "Você realmente deseja apagar o produto:\n"+
+                   edtdescricaoproduto.getText()+"\n"+
                    "Essa ação não pode ser desfeita!";
         
-        if (JOptionPane.showConfirmDialog(this, mensagem,"Apagando cliente",0,2) == 0){
-           cli.setID_CLIENTE(Integer.parseInt(edtIDcliente.getText()));
+        if (JOptionPane.showConfirmDialog(this, mensagem,"Apagando produto",0,2) == 0){
+           cli.setId_produto(Integer.parseInt(edtIDproduto.getText()));
            comando.apagaRegistro(cli);
            atualizaRegistrosTela();
            limpaCamposTela();
@@ -334,15 +335,16 @@ public class ClientesView extends javax.swing.JFrame {
 
     private void tabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMouseClicked
         if (acao == 0){
-        edtIDcliente.setText(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
-        edtnome.setText( tabela.getValueAt(tabela.getSelectedRow(),1).toString() );
-        edtidade.setText( tabela.getValueAt(tabela.getSelectedRow(),2).toString() );
+        edtIDproduto.setText(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
+        edtdescricaoproduto.setText( tabela.getValueAt(tabela.getSelectedRow(),1).toString() );
+        edtPreco.setText( tabela.getValueAt(tabela.getSelectedRow(),2).toString() );
         edtSituacao.setText( tabela.getValueAt(tabela.getSelectedRow(),3).toString() );
+        
         }
     }//GEN-LAST:event_tabelaMouseClicked
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        ClientesDTO cli = new ClientesDTO();
+        ProdutosDTO cli = new ProdutosDTO();
         ComandosDAO DAO = new ComandosDAO();
         String operacao = " = ";
         String contem = "";
@@ -379,20 +381,21 @@ public class ClientesView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClientesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClientesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClientesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClientesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ProdutosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ClientesView().setVisible(true);
+                new ProdutosView().setVisible(true);
             }
         });
     }
@@ -407,11 +410,11 @@ public class ClientesView extends javax.swing.JFrame {
     private javax.swing.JButton btnnovo;
     private javax.swing.JComboBox<String> cbCampos;
     private javax.swing.JComboBox<String> cbOperacao;
-    private javax.swing.JTextField edtIDcliente;
+    private javax.swing.JTextField edtIDproduto;
     private javax.swing.JTextField edtPesquisa;
+    private javax.swing.JTextField edtPreco;
     private javax.swing.JTextField edtSituacao;
-    private javax.swing.JTextField edtidade;
-    private javax.swing.JTextField edtnome;
+    private javax.swing.JTextField edtdescricaoproduto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
