@@ -288,6 +288,7 @@ public class VendasView extends javax.swing.JFrame {
     
     private void limpaCamposTela(){
         edtIDvenda.setText("");
+        edtQuantidade.setText("");
         edtFk_produto.setSelectedIndex(-1);
         edtfk_funcionario.setSelectedIndex(-1);
         edtfk_cliente.setSelectedIndex(-1);
@@ -368,8 +369,8 @@ public class VendasView extends javax.swing.JFrame {
         edtIDvenda.setText(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
         //edtfk_cliente.setText( tabela.getValueAt(tabela.getSelectedRow(),1).toString() );
         ControladorCBClienteDAO.posicionaComboBoxPelaChave(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(),1).toString()) );
-        ControladorCBFuncionarioDAO.posicionaComboBoxPelaChave(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(),2).toString()) );
-        ControladorCBProduto.posicionaComboBoxPelaChave( Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(),3).toString()) );
+        ControladorCBFuncionarioDAO.posicionaComboBoxPelaChave(Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(),3).toString()) );
+        ControladorCBProduto.posicionaComboBoxPelaChave( Integer.parseInt(tabela.getValueAt(tabela.getSelectedRow(),2).toString()) );
         edtQuantidade.setText( tabela.getValueAt(tabela.getSelectedRow(),4).toString() );
         
         }
