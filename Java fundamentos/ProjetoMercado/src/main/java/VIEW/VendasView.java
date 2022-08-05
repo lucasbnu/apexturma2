@@ -273,7 +273,7 @@ public class VendasView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atualizaRegistrosTela(){
-        if (acao == 0){
+        if (acao == 0){ 
             VendasDTO cli = new VendasDTO();
             ComandosDAO DAO = new ComandosDAO();
             tabela.setModel(DAO.retornaRegistroCRUD(cli,""));   
