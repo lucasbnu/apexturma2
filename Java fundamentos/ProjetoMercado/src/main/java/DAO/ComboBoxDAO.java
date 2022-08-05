@@ -66,6 +66,7 @@ public class ComboBoxDAO {
                 comboBox.addItem(novaLinha);
                 
             }
+            comboBox.setSelectedIndex(-1);
         } catch (SQLException ex) {            
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }

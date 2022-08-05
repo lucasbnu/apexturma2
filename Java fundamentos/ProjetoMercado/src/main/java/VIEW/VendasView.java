@@ -34,6 +34,7 @@ public class VendasView extends javax.swing.JFrame {
          ControladorCBClienteDAO = new ComboBoxDAO(edtfk_cliente,cli.getID_CLIENTE(),cli.getNome_cliente(),cli);    
          ControladorCBFuncionarioDAO = new ComboBoxDAO(edtfk_funcionario, fun.getId_funcionario(), fun.getNome_funcionario(), fun);
          ControladorCBProduto = new ComboBoxDAO(edtFk_produto,pro.getId_produto(),pro.getDescricao_produto(),pro);
+         limpaCamposTela();
     }
 
     /**
@@ -272,18 +273,19 @@ public class VendasView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atualizaRegistrosTela(){
-        VendasDTO cli = new VendasDTO();
-        ComandosDAO DAO = new ComandosDAO();
-        tabela.setModel(DAO.retornaRegistroCRUD(cli,""));   
-        cbCampos.removeAllItems();
-        ControladorCBClienteDAO.atualizaDadosComboBox();
-        ControladorCBFuncionarioDAO.atualizaDadosComboBox();
-        ControladorCBProduto.atualizaDadosComboBox();
-        Set<String> apelidos = cli.retornaApelidoCampos().keySet();
-        for (String apelido : apelidos) {
-             cbCampos.addItem(apelido);
-        }
-        
+        if (acao == 0){
+            VendasDTO cli = new VendasDTO();
+            ComandosDAO DAO = new ComandosDAO();
+            tabela.setModel(DAO.retornaRegistroCRUD(cli,""));   
+            cbCampos.removeAllItems();
+            ControladorCBClienteDAO.atualizaDadosComboBox();
+            ControladorCBFuncionarioDAO.atualizaDadosComboBox();
+            ControladorCBProduto.atualizaDadosComboBox();
+            Set<String> apelidos = cli.retornaApelidoCampos().keySet();
+            for (String apelido : apelidos) {
+                 cbCampos.addItem(apelido);
+            }
+        } 
     }
     
     private void limpaCamposTela(){
