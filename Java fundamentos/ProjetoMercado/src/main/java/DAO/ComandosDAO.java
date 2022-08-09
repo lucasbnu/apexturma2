@@ -101,6 +101,7 @@ public class ComandosDAO {
         }
         ValoresTabela += ")";
         banco.executaComando(Comando + CamposTabela + ValoresTabela);
-        return Comando + CamposTabela + ValoresTabela;
+        String cf = Comando + CamposTabela + ValoresTabela;
+        return cf;
     }
 }
