@@ -52,7 +52,7 @@
                         <a href="editar.php?id=15">
                           <button type="button" class="btn btn-primary">Editar</button>
                         </a>
-                        <a href="excluir.php?id=15">
+                        <a href="excluircliente.jsp?id_cliente=19">
                           <button type="button" class="btn btn-danger">Excluir</button>
                         </a>
                       </td>

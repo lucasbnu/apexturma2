@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="DAO.BancoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,6 +12,33 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
 <body>
+<%
+  BancoDAO db = new BancoDAO();
+  int id = Integer.parseInt(request.getParameter("id_cliente"));
+  String nome_cliente = "";
+  String idade = "";
+  String situacao = "";
+  String titulo = "Cadastrando um novo cliente";
+  boolean ativo = true;
+  
+  if (id > 0){
+	 
+     ResultSet retorno = db.retornaDados("select * from clientes where id_cliente = "+id);
+     if (retorno.next()){
+    	titulo = "Alterando cliente "+id;
+        nome_cliente = retorno.getString("nome_cliente");
+        idade = retorno.getString("idade");
+        situacao = retorno.getString("situacao");
+        if (situacao.equals("A")){
+        	ativo = true;
+        }else{
+        	ativo = false;
+        }
+        
+     }
+  }
+
+%>
 <body class="bg-dark text-light">
 
     <div class="container">
@@ -28,18 +57,18 @@
     </a>
   </section>
 
-  <h2 class="mt-3">Editando cliente 25</h2>
+  <h2 class="mt-3"> <%out.write(titulo);%> </h2>
 
   <form method="post">
 
     <div class="form-group">
       <label>Nome cliente</label>
-      <input type="text" class="form-control" name="titulo" value="">
+      <input type="text" class="form-control" name="titulo" value="<%out.write(nome_cliente);%>">
     </div>
 
     <div class="form-group">
       <label>Idade</label>
-      <input type="number" class="form-control" name="idade" value="">
+      <input type="number" class="form-control" name="idade" value="<%out.write(idade);%>">
     </div>
 
     <div class="form-group">
@@ -48,13 +77,13 @@
       <div>
           <div class="form-check form-check-inline">
             <label class="form-control">
-              <input type="radio" name="ativo" value="s" checked=""> Ativo
+              <input type="radio" name="ativo" value="s" <% if (ativo){ out.write("checked=''");} %>> Ativo
             </label>
           </div>
 
           <div class="form-check form-check-inline">
             <label class="form-control">
-              <input type="radio" name="ativo" value="n"> Inativo
+              <input type="radio" name="ativo" value="n"<% if (!ativo){ out.write("checked=''");} %>> Inativo
             </label>
           </div>
       </div>

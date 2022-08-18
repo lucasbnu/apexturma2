@@ -13,10 +13,14 @@ public class BancoDAO {
     public BancoDAO(){ 
          String textoConexao = "jdbc:mysql://localhost:3306/projetomercado?user=root&password=";
          try {
+        	Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(textoConexao);
         } catch (SQLException e) {
              JOptionPane.showMessageDialog(null, "BancoDAO.BancoDAO: "+e.getMessage());
-        }
+        } catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
         public ResultSet retornaDados(String Comando){
