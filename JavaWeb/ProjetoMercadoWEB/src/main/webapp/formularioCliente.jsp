@@ -59,11 +59,11 @@
 
   <h2 class="mt-3"> <%out.write(titulo);%> </h2>
 
-  <form method="post">
-
+  <form method="get" action="SalvaCliente.jsp">
+    <input type="hidden" name="id_cliente" value="<%out.write(String.valueOf((id)));%>">
     <div class="form-group">
       <label>Nome cliente</label>
-      <input type="text" class="form-control" name="titulo" value="<%out.write(nome_cliente);%>">
+      <input type="text" class="form-control" name="nome_cliente" value="<%out.write(nome_cliente);%>">
     </div>
 
     <div class="form-group">
@@ -77,13 +77,13 @@
       <div>
           <div class="form-check form-check-inline">
             <label class="form-control">
-              <input type="radio" name="ativo" value="s" <% if (ativo){ out.write("checked=''");} %>> Ativo
+              <input type="radio" name="situacao" value="A" <% if (ativo){ out.write("checked=''");} %>> Ativo
             </label>
           </div>
 
           <div class="form-check form-check-inline">
             <label class="form-control">
-              <input type="radio" name="ativo" value="n"<% if (!ativo){ out.write("checked=''");} %>> Inativo
+              <input type="radio" name="situacao" value="I"<% if (!ativo){ out.write("checked=''");} %>> Inativo
             </label>
           </div>
       </div>

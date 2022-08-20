@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="DAO.BancoDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -42,21 +44,46 @@
           </tr>
         </thead>
         <tbody>
+        <%
+        BancoDAO db = new BancoDAO();
+        String id = "";
+        String nome_cliente = "";
+        String idade = "";
+        String situacao = "";
+        String situacao_desc = "";
+        
+      	 
+           ResultSet retorno = db.retornaDados("select * from clientes");
+           while (retorno.next()){
+        	  id = retorno.getString("id_cliente");
+              nome_cliente = retorno.getString("nome_cliente");
+              idade = retorno.getString("idade");
+              situacao = retorno.getString("situacao");
+              if (situacao.equals("A")){
+            	situacao_desc = "Ativo";
+              }else{
+            	situacao_desc = "Inativo";
+              }
+              
+           
+        
+
+        %>
             <tr>
-                      <td>19</td>
-                      <td>Geraldão</td>
-                      <td>60</td>
-                      <td>Ativo</td>
+                      <td><%out.write(id); %></td>
+                      <td><%out.write(nome_cliente); %></td>
+                      <td><%out.write(idade); %></td>
+                      <td><%out.write(situacao_desc); %></td>
                       
                       <td>
-                        <a href="editar.php?id=15">
+                        <a href="formularioCliente.jsp?id_cliente=<%out.write(id);%>">
                           <button type="button" class="btn btn-primary">Editar</button>
                         </a>
-                        <a href="excluircliente.jsp?id_cliente=19">
+                        <a href="excluircliente.jsp?id_cliente=<%out.write(id);%>">
                           <button type="button" class="btn btn-danger">Excluir</button>
                         </a>
                       </td>
-                    </tr>        </tbody>
+                    </tr> <%} %>        </tbody>
     </table>
 
   </section>
