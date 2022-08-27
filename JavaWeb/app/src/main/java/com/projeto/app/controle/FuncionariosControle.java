@@ -14,32 +14,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.projeto.app.modelo.ClientesModelo;
-import com.projeto.app.repositorio.ClientesRepositorio;
+import com.projeto.app.modelo.FuncionarioModelo;
+import com.projeto.app.repositorio.FuncionarioRepositorio;
 
 @RestController // define esse classe como restcontroler
                 // assim ele vai buscar pelos GetMapping atras das urls do http
-public class ClientesControle {
+public class FuncionariosControle {
     @Autowired
-	ClientesRepositorio rep;
+	FuncionarioRepositorio rep;
     
-    @GetMapping(path = "api/clientes") // Mapeia o HTTP do metodo
-    public List<ClientesModelo> buscar(){
+    @GetMapping(path = "api/funcionario") // Mapeia o HTTP do metodo
+    public List<FuncionarioModelo> buscar(){
          return rep.findAll();	
     }
     
-    @GetMapping(path = "api/clientes/{codigo}")
-    public ClientesModelo buscaPorID(@PathVariable("codigo") Integer codigo ) {
-		Optional<ClientesModelo> cliente = rep.findById(codigo);
+    @GetMapping(path = "api/funcionario/{codigo}")
+    public FuncionarioModelo buscaPorID(@PathVariable("codigo") Integer codigo ) {
+		Optional<FuncionarioModelo> cliente = rep.findById(codigo);
 		return cliente.get();
     }
     
-    @PostMapping(path = "api/clientes/salvar")
-    public void salvar(@RequestBody ClientesModelo cli) {
+    @PostMapping(path = "api/funcionario/salvar")
+    public void salvar(@RequestBody FuncionarioModelo cli) {
     	rep.save(cli);
     }
      
-    @DeleteMapping(path = "api/clientes/deletar/{codigo}")
+    @DeleteMapping(path = "api/funcionario/deletar/{codigo}")
     public void deletar(@PathVariable("codigo") Integer codigo ) {
     	try {
 		  rep.deleteById(codigo);	
@@ -48,8 +48,8 @@ public class ClientesControle {
 		}
     }
     
-    @RequestMapping(path = "api/clientes/altera", method = RequestMethod.PUT)
-    public void altera(@RequestBody ClientesModelo cli) {
+    @RequestMapping(path = "api/funcionario/altera", method = RequestMethod.PUT)
+    public void altera(@RequestBody FuncionarioModelo cli) {
     	try {
 	       rep.save(cli);
 		} catch (Exception e) {
