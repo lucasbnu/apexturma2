@@ -9,7 +9,7 @@ import javax.swing.table.TableModel;
 public class ComandosDAO {
     private BancoDAO banco = new BancoDAO();
     
-    public ResultSet retornaRegistroCRUD(Tabela tb, String Where){
+    public TableModel retornaRegistroCRUD(Tabela tb, String Where){
         ArrayList<Campo> listaCampos = tb.retornaCampos();
         String campos = "";
         int tamanhoLista = listaCampos.size();
@@ -20,7 +20,7 @@ public class ComandosDAO {
             }
             tamanhoLista--;
         }
-        return  banco.retornaDados("SELECT "+campos+" FROM "+tb.nomeTabela+" "+Where) ;  
+        return CRUDUtil.resultSetToTableModel( banco.retornaDados("SELECT "+campos+" FROM "+tb.nomeTabela+" "+Where) );  
     }
     
     public String atualizaRegistro(Tabela tb) {
