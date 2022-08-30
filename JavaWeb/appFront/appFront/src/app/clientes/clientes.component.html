@@ -1,0 +1,7 @@
+<div *ngIf="erro">{{erro}}</div>
+<div *ngIf="sucesso">{{sucesso}}</div>
+
+<h1>Lista de clientes</h1>
+<ul>
+  <li *ngFor="let c of clientes">{{c.id_cliente}} | {{c.nome_cliente}} | {{c.idade}} | {{c.situacao}}</li>
+</ul>
