@@ -10,7 +10,7 @@ import { Clientes } from "./clientes";
     providedIn: 'root' 
 })
 export class ClientesServices {
-        urlProjeto = "http://http://localhost:8090/api/clientes";
+        urlProjeto = "http://localhost:8090/api/clientes";
         clientes: Clientes[];
         
         private falha(error: HttpErrorResponse) {
